@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+    nestjs:
+        container_name: ${DOCKER_CONTAINER_NAME}
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        env_file: .env
+        ports:
+            - '${DOCKER_EXPORT_APP_PORT}:${APP_PORT}'
+        volumes:
+            - public-data:/app/public
+        networks:
+            - vam-network
+        healthcheck:
+            test:
+                [
+                    'CMD-SHELL',
+                    'curl --fail http://localhost:${APP_PORT}/liveness || exit 1',
+                ]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+        deploy:
+            resources:
+                limits:
+                    cpus: '1.0'
+                    memory: '512M'
+
+networks:
+    vam-network:
+        driver: bridge
+
+volumes:
+    public-data:

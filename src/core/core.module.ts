@@ -6,13 +6,14 @@ import { TransactionInterceptor } from './interceptors/transaction.interceptor';
 import { ValidationPipe } from './pipes/validation.pipe';
 import { UnitOfWorkService } from './unit-of-work/unit-of-work.service';
 import { IsUniqueConstraint } from './validator';
+import { DatabaseModule } from './database/database.module';
 
 
 
 @Global()
 @Module({
   imports: [
-  ],
+  DatabaseModule],
   providers: [
     UnitOfWorkService,
     {
