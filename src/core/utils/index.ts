@@ -1,2 +1,1 @@
-export * from './date-time.util';
-
+export * from './date-time.util'

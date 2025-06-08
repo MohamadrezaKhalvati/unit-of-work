@@ -1,4 +1,1 @@
-
-export const TypeOrmModels = [
-    
-]
+export const TypeOrmModels = []

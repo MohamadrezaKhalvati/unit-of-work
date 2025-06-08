@@ -37,9 +37,6 @@ export class QueryParams<T = any> extends SingleQueryParams<T> {
     sort?: FindOptionsOrder<T>
 }
 
-
-
-
 export class QueryBuilderParams<T = any> {
     @IsOptional()
     @Type(() => Number)
