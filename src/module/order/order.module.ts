@@ -1,9 +1,25 @@
+// src/orders/orders.module.ts
 import { Module } from '@nestjs/common';
-import { OrderService } from './order.service';
-import { OrderController } from './order.controller';
+import { DatabaseModule } from 'src/core/database/database.module';
+import { ProductsModule } from '../product/product.module';
+import { UsersModule } from '../user/user.module';
+import { OrdersController } from './order.controller';
+import { OrdersService } from './order.service';
+import { OrderItemRepository } from './repository/order-item.repository';
+import { OrderRepository } from './repository/order.repository';
 
 @Module({
-  controllers: [OrderController],
-  providers: [OrderService],
+  imports: [
+   DatabaseModule,
+    UsersModule,   
+    ProductsModule, 
+  ],
+  controllers: [OrdersController],
+  providers: [
+    OrdersService,
+    OrderRepository,
+    OrderItemRepository,
+  ],
+  exports: [OrdersService],
 })
-export class OrderModule {}
+export class OrdersModule {}

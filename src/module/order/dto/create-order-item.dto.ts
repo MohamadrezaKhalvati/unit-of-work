@@ -1,13 +1,13 @@
 // src/orders/dto/create-order.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { ArrayMinSize, IsArray, IsInt, IsNotEmpty, IsNumber, Min } from 'class-validator';
+import { ArrayMinSize, IsArray, IsInt, IsNotEmpty, IsUUID, Min } from 'class-validator';
 
 export class OrderItemDto {
   @ApiProperty({ example: '1', description: 'Product ID' })
-  @IsNumber()
+  @IsUUID()
   @IsNotEmpty()
-  product_id: number;
+  productId: string;
 
   @ApiProperty({ example: 2, description: 'Quantity of the product' })
   @IsInt()
@@ -17,12 +17,13 @@ export class OrderItemDto {
 
 export class CreateOrderDto {
   @ApiProperty({ example: '1', description: 'ID of the user placing the order' })
-  @IsNumber()
-  user_id: number;
+ 
+  @IsNotEmpty()
+  userId: string;
 
   @ApiProperty({ type: [OrderItemDto], description: 'List of items in the order' })
   @IsArray()
   @ArrayMinSize(1)
-  @Type(() => OrderItemDto)
+  @Type(() => OrderItemDto) 
   items: OrderItemDto[];
 }

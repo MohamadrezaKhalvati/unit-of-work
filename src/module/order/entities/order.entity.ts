@@ -13,8 +13,8 @@ export class Order extends BaseEntity  {
 	@Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.PENDING })
 	status: OrderStatus;
   
-	@Column({  }) 
-	user_id: string;
+	@Column({ type: 'int' }) 
+	user_id: number;
   
 	@ManyToOne(() => User, user => user.orders)
 	@JoinColumn({ name: 'user_id' })

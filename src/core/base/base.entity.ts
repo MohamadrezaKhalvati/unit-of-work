@@ -1,14 +1,14 @@
 // src/core/base/base.entity.ts
 import {
-    Column,
-    CreateDateColumn,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
+	Column,
+	CreateDateColumn,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn,
 } from 'typeorm'
 
 export abstract class BaseEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+    @PrimaryGeneratedColumn()
+    id: number
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date
