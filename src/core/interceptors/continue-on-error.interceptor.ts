@@ -25,7 +25,6 @@ export class ContinueOnErrorInterceptor implements NestInterceptor {
                         warning: 'Bad request handled, flow continues',
                     })
                 }
-                // Re-throw other types of errors
                 throw error
             }),
         )

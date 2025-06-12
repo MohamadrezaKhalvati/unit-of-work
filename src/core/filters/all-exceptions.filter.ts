@@ -1,4 +1,3 @@
-// src/core/filters/all-exceptions.filter.ts
 import {
     ArgumentsHost,
     Catch,
@@ -8,9 +7,6 @@ import {
 } from '@nestjs/common'
 import { Request, Response } from 'express'
 
-/**
- * Global exception filter to catch all exceptions and format the response.
- */
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
     catch(exception: unknown, host: ArgumentsHost) {
@@ -28,7 +24,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
                 ? (exception.getResponse() as any)?.message || exception.message
                 : 'Internal server error'
 
-        // Log the error for debugging purposes (in a real app, use a logger)
         console.error(
             `[${request.method}] ${request.url} - ${status} - ${message}`,
         )

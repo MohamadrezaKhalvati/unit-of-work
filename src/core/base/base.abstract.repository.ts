@@ -1,14 +1,13 @@
-// src/core/base/base.abstract.repository.ts
 import {
-	DeepPartial,
-	EntityTarget,
-	FindManyOptions,
-	FindOneOptions,
-	Repository,
-} from 'typeorm';
-import { UnitOfWorkService } from '../unit-of-work/unit-of-work.service';
-import { BaseEntity } from './base.entity';
-import { IBaseRepository } from './base.interface.repository';
+    DeepPartial,
+    EntityTarget,
+    FindManyOptions,
+    FindOneOptions,
+    Repository,
+} from 'typeorm'
+import { UnitOfWorkService } from '../unit-of-work/unit-of-work.service'
+import { BaseEntity } from './base.entity'
+import { IBaseRepository } from './base.interface.repository'
 
 export abstract class BaseAbstractRepository<T extends BaseEntity>
     implements IBaseRepository<T>
@@ -46,7 +45,7 @@ export abstract class BaseAbstractRepository<T extends BaseEntity>
 
     async findById(id: number): Promise<T | null> {
         return this._repository.findOne({
-            where: { id: id  },
+            where: { id: id },
         } as FindOneOptions<T>)
     }
 

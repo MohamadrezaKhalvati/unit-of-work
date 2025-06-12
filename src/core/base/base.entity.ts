@@ -1,9 +1,9 @@
 // src/core/base/base.entity.ts
 import {
-	Column,
-	CreateDateColumn,
-	PrimaryGeneratedColumn,
-	UpdateDateColumn,
+    Column,
+    CreateDateColumn,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
 } from 'typeorm'
 
 export abstract class BaseEntity {
